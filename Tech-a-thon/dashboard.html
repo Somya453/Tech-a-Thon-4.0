@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>Government Community Portal</header>
+    <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="index.html" id="logout">Logout</a>
+    </nav>
+
+    <div class="container">
+        <h2>Welcome to the Dashboard</h2>
+        <p>Here, you can access all community services.</p>
+
+        <section id="report">
+            <h2>Report Issues</h2>
+            <form>
+                <input type="text" placeholder="Issue Title" required>
+                <textarea placeholder="Describe the issue..." required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+
+        <section id="events">
+            <h2>Community Events</h2>
+            <form>
+                <input type="text" placeholder="Event Name" required>
+                <input type="date" required>
+                <textarea placeholder="Event Details..." required></textarea>
+                <button type="submit">Post Event</button>
+            </form>
+        </section>
+
+        <section id="services">
+            <h2>Service Exchange</h2>
+            <form>
+                <input type="text" placeholder="Service Title" required>
+                <textarea placeholder="Service Description..." required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+
+        <section id="dashboard-content">
+            <h2>Live Dashboard</h2>
+            <button onclick="refreshDashboard()">Refresh</button>
+            <p>Updated reports and events displayed here.</p>
+        </section>
+    </div>
+
+    <script>
+        if (localStorage.getItem('isLoggedIn') !== 'true') {
+            alert('You must be logged in to access this page!');
+            window.location.href = 'login.html';
+        }
+
+        document.getElementById('logout').addEventListener('click', function() {
+            localStorage.removeItem('isLoggedIn');
+            alert('You have been logged out!');
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>
